@@ -9,7 +9,7 @@ const Todo = () => {
 
   return (
     <div className="flex flex-row justify-between items-center px-3 py-3 min-w-[32rem] border-[#B9B7BD] border rounded-md">
-      <h1 className="text-xl text-black">Todo title</h1>
+      <h1 className="text-xl text-white">Todo title</h1>
       <p className="text-sm text-[#868B8E]">Due: 22.02.2022</p>
 
       <div className="flex flex-row justify-between items-center">
