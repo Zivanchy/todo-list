@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { BiTrash, BiPencil, BiInfoCircle } from 'react-icons/bi';
 
-const Todo = () => {
+const Todo = ({ title, dueDate }) => {
   const [trashColor, setTrashColor] = useState('black');
   const [pencilColor, setPencilColor] = useState('black');
   const [infoColor, setInfoColor] = useState('black');
 
   return (
     <div className="flex flex-row justify-between items-center px-3 py-3 min-w-[32rem] border-[#B9B7BD] border rounded-md">
-      <h1 className="text-xl text-white">Todo title</h1>
-      <p className="text-sm text-[#868B8E]">Due: 22.02.2022</p>
+      <h1 className="text-xl text-white">{title}</h1>
+      <p className="text-sm text-[#868B8E]">{dueDate}</p>
 
       <div className="flex flex-row justify-between items-center">
         <BiInfoCircle
