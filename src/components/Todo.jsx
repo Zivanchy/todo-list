@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
+import { TodoContext } from '../context/TodoContext';
 
 import { BiTrash, BiPencil, BiInfoCircle } from 'react-icons/bi';
 
@@ -7,10 +8,23 @@ const Todo = ({ title, dueDate }) => {
   const [pencilColor, setPencilColor] = useState('black');
   const [infoColor, setInfoColor] = useState('black');
 
+  const { loading } = useContext(TodoContext);
+
+  const toDateTime = (secs) => {
+    let t = new Date(1970, 0, 1);
+    t.setSeconds(secs);
+    let normalDate = t.toLocaleString('en-GB');
+    return normalDate;
+  };
+
+  if (loading) return;
+
   return (
     <div className="flex flex-row justify-between items-center px-3 py-3 min-w-[32rem] border-[#B9B7BD] border rounded-md">
-      <h1 className="text-xl text-white">{title}</h1>
-      <p className="text-sm text-[#868B8E]">{dueDate}</p>
+      <h1 className="text-xl text-white">
+        {title.length > 10 ? `${title.slice(0, 10)}...` : title}
+      </h1>
+      <p className="text-sm text-[#868B8E]">{toDateTime(dueDate)}</p>
 
       <div className="flex flex-row justify-between items-center">
         <BiInfoCircle

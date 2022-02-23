@@ -1,4 +1,4 @@
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection, addDoc } from 'firebase/firestore';
 import { database } from '../firebase.config';
 
 export const getTodos = async () => {
@@ -9,4 +9,12 @@ export const getTodos = async () => {
   });
 
   return todosArray;
+};
+
+export const addTodos = async (title, desc, dueDate) => {
+  await addDoc(collection(database, 'todos'), {
+    title: title,
+    desc: desc,
+    dueDate: dueDate,
+  });
 };

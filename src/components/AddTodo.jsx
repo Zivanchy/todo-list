@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { addTodos } from '../context/TodoActions';
 
 const AddTodo = () => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [date, setDate] = useState('');
+
   const handleForm = (e) => {
     e.preventDefault();
-    console.log('form submitted');
+
+    if (!title || !description || !date) return;
+
+    addTodos(title, description, date);
+    setTitle('');
+    setDescription('');
+    setDate('');
   };
 
   return (
@@ -14,12 +26,18 @@ const AddTodo = () => {
         <input
           type="text"
           className="input input-bordered input-info w-full max-w-xs"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
       </div>
 
       <div className="w-full">
         <label className="label label-text">Todo Description:</label>
-        <textarea className="input input-bordered input-info w-full max-w-xs"></textarea>
+        <textarea
+          className="input input-bordered input-info w-full max-w-xs"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
       </div>
 
       <div className="w-full">
@@ -27,6 +45,8 @@ const AddTodo = () => {
         <input
           type="date"
           className="w-full max-w-xs bg-transparent border rounded-[5px] border-white"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
         />
       </div>
 
