@@ -6,6 +6,8 @@ const todoReducer = (state, action) => {
         todos: action.payload.todos,
         loading: action.payload.loading,
       };
+    default:
+      return { ...state };
   }
 };
 

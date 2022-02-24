@@ -1,31 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import AddTodo from './AddTodo';
 import TodoCollection from './TodoCollection';
 
 const Header = () => {
-  const [activeForm, setActiveForm] = useState({
-    active: false,
-    buttonText: 'Add New Todo',
-  });
+  const navigate = useNavigate();
 
   return (
     <header className="mt-32 mx-auto text-center flex flex-col justify-center items-center">
       <h1 className="text-3xl text-bold">Todo App</h1>
       <button
         className="w-32 max-h-12 text-white mt-1 rounded-md bg-[#81B622] hover:bg-[#ECF87F] hover:text-black transition-colors"
-        onClick={() =>
-          setActiveForm({
-            active: !activeForm.active,
-            buttonText: !activeForm.active ? 'Close popup' : 'Add New Todo',
-          })
-        }
+        onClick={() => navigate('/addTodo')}
       >
-        {activeForm.buttonText}
+        Add New Todo
       </button>
 
-      {activeForm.active && <AddTodo />}
-      {!activeForm.active && <TodoCollection />}
+      <TodoCollection />
     </header>
   );
 };

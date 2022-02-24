@@ -1,13 +1,21 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import { TodoProvider } from './context/TodoContext';
 
 import Header from './components/Header';
-import { TodoProvider } from './context/TodoContext';
+import AddTodo from './components/AddTodo';
 
 const App = () => {
   return (
     <>
       <TodoProvider>
-        <Header />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Header />} />
+            <Route path="/addTodo" element={<AddTodo />} />
+          </Routes>
+        </BrowserRouter>
       </TodoProvider>
     </>
   );

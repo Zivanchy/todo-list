@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { addTodos } from '../context/TodoActions';
 
@@ -6,6 +7,8 @@ const AddTodo = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
+
+  const navigate = useNavigate();
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -16,6 +19,8 @@ const AddTodo = () => {
     setTitle('');
     setDescription('');
     setDate('');
+
+    navigate('/');
   };
 
   return (
