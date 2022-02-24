@@ -15,25 +15,28 @@ const TodoCollection = () => {
         type: 'GET_TODOS',
         payload: {
           todos: data,
-          loading: false,
         },
       });
     };
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, todos]);
 
   if (loading) return <h1>Loading...</h1>;
 
   return (
     <div className="flex flex-col gap-y-5 justify-center items-center mt-[5rem]">
-      {todos.map((todo, index) => (
-        <Todo
-          key={index}
-          title={todo.title}
-          description={todo.description}
-          dueDate={todo.dueDate}
-        />
-      ))}
+      {todos.length > 0 ? (
+        todos.map((todo) => (
+          <Todo
+            key={todo.id}
+            todoId={todo.id}
+            title={todo.data.title}
+            dueDate={todo.data.dueDate}
+          />
+        ))
+      ) : (
+        <h1>No more todos, congrats!</h1>
+      )}
     </div>
   );
 };
