@@ -31,7 +31,7 @@ const TodoCollection = () => {
           key={index}
           title={todo.title}
           description={todo.description}
-          dueDate={todo.dueDate.seconds}
+          dueDate={todo.dueDate}
         />
       ))}
     </div>

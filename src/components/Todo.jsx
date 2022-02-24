@@ -10,13 +10,6 @@ const Todo = ({ title, dueDate }) => {
 
   const { loading } = useContext(TodoContext);
 
-  const toDateTime = (secs) => {
-    let t = new Date(1970, 0, 1);
-    t.setSeconds(secs);
-    let normalDate = t.toLocaleString('en-GB');
-    return normalDate;
-  };
-
   if (loading) return;
 
   return (
@@ -24,7 +17,7 @@ const Todo = ({ title, dueDate }) => {
       <h1 className="text-xl text-white">
         {title.length > 10 ? `${title.slice(0, 10)}...` : title}
       </h1>
-      <p className="text-sm text-[#868B8E]">{toDateTime(dueDate)}</p>
+      <p className="text-sm text-[#868B8E]">{dueDate}</p>
 
       <div className="flex flex-row justify-between items-center">
         <BiInfoCircle
